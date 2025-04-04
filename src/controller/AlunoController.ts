@@ -138,4 +138,4 @@ class AlunoController extends Aluno {
     }
 }
 
-export default AlunoController;
+export default AlunoController;7
