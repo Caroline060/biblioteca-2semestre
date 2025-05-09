@@ -70,9 +70,25 @@ class UsuarioController extends Usuario {
             // Em caso de erro, registra nos logs e retorna erro para o cliente
             console.error('Erro ao cadastrar usuário:', error);
             res.status(500).json({ erro: 'Erro ao cadastrar usuário', detalhes: error });
-        }
+        }        
+    }
 
-        
+    /**
+     * Lista todos os usuários.
+     * @param req Objeto de requisição HTTP.
+     * @param res Objeto de resposta HTTP.
+     * @returns Lista de usuários em formato JSON.
+     */
+       static async todos(req: Request, res: Response) {
+        try {
+            const listaDeUsuarios = await Usuario.listarUsuarios();
+
+            res.status(200).json(listaDeUsuarios);
+        } catch (error) {
+            console.log(`Erro ao acessar método herdado: ${error}`);
+
+            res.status(400).json("Erro ao recuperar as informações do Usuario");
+        }
     }
 
 }
